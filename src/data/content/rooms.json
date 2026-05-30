@@ -1,0 +1,43 @@
+{
+  "rooms": [
+    {
+      "title": "Garden Bungalow",
+      "slug": "garden-bungalow",
+      "priceFrom": "฿2,800",
+      "guests": "2 Guests",
+      "viewType": "Garden View",
+      "shortDescription": "Cozy and private bungalows surrounded by tropical greenery.",
+      "longDescription": "Nestled beside the garden path, this bungalow is made for slow mornings, cool afternoons and quiet nights close to nature.",
+      "amenities": ["King bed", "Private terrace", "Rain shower", "Air conditioning", "Mini fridge"],
+      "mainImage": "/images/garden-bungalow.jpg",
+      "bookingUrl": "https://booking.example.com/garden-bungalow",
+      "featured": true
+    },
+    {
+      "title": "Deluxe Pool View",
+      "slug": "deluxe-pool-view",
+      "priceFrom": "฿3,800",
+      "guests": "2 Guests",
+      "viewType": "Pool View",
+      "shortDescription": "Spacious rooms with private balcony overlooking the pool.",
+      "longDescription": "A generous room with refined natural textures, a shaded balcony and easy access to the pool terrace.",
+      "amenities": ["King bed", "Pool view balcony", "Daybed", "Coffee station", "Smart TV"],
+      "mainImage": "/images/deluxe-pool-view.jpg",
+      "bookingUrl": "https://booking.example.com/deluxe-pool-view",
+      "featured": true
+    },
+    {
+      "title": "Jungle Pool Villa",
+      "slug": "jungle-pool-villa",
+      "priceFrom": "฿4,800",
+      "guests": "2 Guests",
+      "viewType": "Pool Access",
+      "shortDescription": "Elegant villa with extra space, privacy and pool access.",
+      "longDescription": "The most private stay at Jungle House, designed for unhurried days between the terrace, pool and tropical canopy.",
+      "amenities": ["Private plunge pool", "Outdoor lounge", "Large bathroom", "Espresso bar", "Evening turndown"],
+      "mainImage": "/images/jungle-pool-villa.jpg",
+      "bookingUrl": "https://booking.example.com/jungle-pool-villa",
+      "featured": true
+    }
+  ]
+}

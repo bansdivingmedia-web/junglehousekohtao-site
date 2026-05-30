@@ -1,0 +1,24 @@
+{
+  "experiences": [
+    {
+      "title": "Signature Pool",
+      "description": "Our organic shaped pool blends with nature for the perfect place to unwind.",
+      "iconName": "waves"
+    },
+    {
+      "title": "Tropical Gardens",
+      "description": "Winding paths, lush plants and peaceful corners throughout the resort.",
+      "iconName": "leaf"
+    },
+    {
+      "title": "Island Relaxation",
+      "description": "Sun, sea and stillness. A slower pace of life on Koh Tao.",
+      "iconName": "sun"
+    },
+    {
+      "title": "Diving Access",
+      "description": "Explore world-class dive sites just minutes away from our doorstep.",
+      "iconName": "compass"
+    }
+  ]
+}

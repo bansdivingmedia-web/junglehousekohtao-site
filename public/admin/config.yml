@@ -1,0 +1,125 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+publish_mode: simple
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+site_url: https://junglehousekohtao.netlify.app
+display_url: https://junglehousekohtao.netlify.app
+logo_url: /images/jungle-house-logo.png
+
+collections:
+  - name: settings
+    label: Site Settings
+    files:
+      - label: Main Settings
+        name: site_settings
+        file: src/data/content/siteSettings.json
+        fields:
+          - { label: Resort Name, name: resortName, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Phone, name: phone, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: Address, name: address, widget: text }
+          - { label: Book Now URL, name: bookNowUrl, widget: string }
+          - { label: Google Map URL, name: googleMapUrl, widget: string }
+          - { label: Instagram URL, name: instagramUrl, widget: string }
+          - { label: Facebook URL, name: facebookUrl, widget: string }
+          - { label: Line URL, name: lineUrl, widget: string }
+          - { label: WhatsApp URL, name: whatsappUrl, widget: string }
+
+  - name: homepage
+    label: Homepage
+    files:
+      - label: Homepage Content
+        name: homepage
+        file: src/data/content/homepage.json
+        fields:
+          - { label: Hero Label, name: heroLabel, widget: string }
+          - { label: Hero Headline, name: heroHeadline, widget: text }
+          - { label: Hero Text, name: heroText, widget: text }
+          - { label: Story Label, name: storyLabel, widget: string }
+          - { label: Story Heading, name: storyHeading, widget: string }
+          - { label: Story Text, name: storyText, widget: text }
+
+  - name: rooms
+    label: Rooms
+    files:
+      - label: Rooms List
+        name: rooms
+        file: src/data/content/rooms.json
+        fields:
+          - label: Rooms
+            name: rooms
+            widget: list
+            allow_add: true
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Slug, name: slug, widget: string }
+              - { label: Price From, name: priceFrom, widget: string }
+              - { label: Guests, name: guests, widget: string }
+              - { label: View Type, name: viewType, widget: string }
+              - { label: Short Description, name: shortDescription, widget: text }
+              - { label: Long Description, name: longDescription, widget: text }
+              - { label: Amenities, name: amenities, widget: list, field: { label: Amenity, name: amenity, widget: string } }
+              - { label: Main Image, name: mainImage, widget: image }
+              - { label: Booking URL, name: bookingUrl, widget: string }
+              - { label: Featured on Homepage, name: featured, widget: boolean, default: true }
+
+  - name: gallery
+    label: Gallery
+    files:
+      - label: Gallery Images
+        name: gallery
+        file: src/data/content/gallery.json
+        fields:
+          - label: Images
+            name: images
+            widget: list
+            allow_add: true
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Category, name: category, widget: string }
+              - { label: Image, name: image, widget: image }
+              - { label: Alt Text, name: alt, widget: string }
+              - { label: Featured on Homepage, name: featured, widget: boolean, default: true }
+
+  - name: experiences
+    label: Experiences
+    files:
+      - label: Experiences List
+        name: experiences
+        file: src/data/content/experiences.json
+        fields:
+          - label: Experiences
+            name: experiences
+            widget: list
+            allow_add: true
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Icon Name, name: iconName, widget: select, options: [waves, leaf, sun, compass] }
+
+  - name: testimonials
+    label: Reviews
+    files:
+      - label: Reviews List
+        name: testimonials
+        file: src/data/content/testimonials.json
+        fields:
+          - label: Reviews
+            name: reviews
+            widget: list
+            allow_add: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Guest Name, name: name, widget: string }
+              - { label: Country, name: country, widget: string }
+              - { label: Quote, name: quote, widget: text }
+              - { label: Rating, name: rating, widget: number, value_type: int, min: 1, max: 5 }

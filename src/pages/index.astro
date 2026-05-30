@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteSettings } from "../data/siteSettings";
+import { homepage } from "../data/homepage";
+import { rooms } from "../data/rooms";
+import { gallery } from "../data/gallery";
+import { testimonials } from "../data/testimonials";
+import { experiences } from "../data/experiences";
+import { CalendarDays, ChevronRight, Leaf, Palmtree, Snail, Sunrise, Users, Waves } from "lucide-astro";
+
+const featuredRooms = rooms.filter((room) => room.featured).slice(0, 3);
+const featuredGallery = gallery.filter((item) => item.featured).slice(0, 5);
+---
+
+<BaseLayout title={`${siteSettings.resortName} | ${siteSettings.tagline}`} description={homepage.heroText}>
+  <main>
+    <section class="relative">
+      <div class="relative min-h-[575px] overflow-hidden bg-jungle sm:min-h-[620px] lg:min-h-[610px]">
+        <img class="hero-parallax absolute inset-x-0 top-[-7%] h-[114%] w-full object-cover object-[42%_48%] lg:object-[57%_45%]" src="/images/resort-hero.jpg" alt="Jungle House Koh Tao resort pool surrounded by tropical foliage" data-parallax="0.11" />
+        <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,20,15,0.9)_0%,rgba(7,20,15,0.74)_24%,rgba(7,20,15,0.42)_52%,rgba(7,20,15,0.13)_76%,rgba(7,20,15,0)_100%)] lg:bg-[linear-gradient(90deg,rgba(7,20,15,0.9)_0%,rgba(7,20,15,0.68)_22%,rgba(7,20,15,0.3)_50%,rgba(7,20,15,0.08)_72%,rgba(7,20,15,0)_100%)]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#07140f]/12 via-transparent to-[#07140f]/12"></div>
+        <div class="absolute inset-y-0 left-0 w-[78%] bg-[linear-gradient(90deg,rgba(7,20,15,0.22)_0%,rgba(7,20,15,0.16)_38%,rgba(7,20,15,0.06)_72%,rgba(7,20,15,0)_100%)] lg:w-[56%]"></div>
+        <div class="container-pad relative flex min-h-[575px] items-center pb-24 pt-8 sm:min-h-[620px] lg:min-h-[610px]">
+          <div class="hero-copy max-w-[440px] text-cream" data-reveal>
+            <h1 class="font-serif text-[3.7rem] font-medium uppercase leading-[0.98] tracking-[0.015em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.22)] sm:text-[5.25rem] lg:text-[5.9rem]">
+              {homepage.heroHeadline.split("\n").map((line) => <span class="block">{line}</span>)}
+            </h1>
+            <p class="mt-8 max-w-[335px] text-[17px] font-semibold leading-8 text-cream/95">{homepage.heroText}</p>
+            <p class="mt-10 inline-flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.16em] text-cream">
+              <Leaf size={19} class="text-sand" />{homepage.heroLabel}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="container-pad relative z-10 -mt-[52px]">
+        <form class="booking-panel mx-auto grid max-w-[910px] gap-0 overflow-hidden rounded-[14px] border border-[#ded6c7] bg-[#fffdf8] shadow-[0_14px_30px_rgba(24,58,45,0.16)] md:grid-cols-[1fr_1fr_1fr_auto]" data-reveal>
+          {["Check-in", "Check-out", "Guests"].map((label, index) => (
+            <label class="flex items-center justify-between gap-5 border-b border-jungle/10 px-8 py-5 md:border-b-0 md:border-r">
+              <span>
+                <span class="block text-[10px] font-bold uppercase tracking-[0.14em] text-jungle/58">{label}</span>
+                <span class="mt-3 block text-sm font-medium text-jungle/70">{label === "Guests" ? "2 Adults" : "Select date"}</span>
+              </span>
+              {index === 2 ? <Users size={18} /> : <CalendarDays size={18} />}
+            </label>
+          ))}
+          <a class="button-primary m-4 min-h-14 px-8" href={siteSettings.bookNowUrl}>Check Availability</a>
+        </form>
+      </div>
+    </section>
+
+    <section class="container-pad grid items-center gap-12 pb-14 pt-24 lg:grid-cols-[0.58fr_1fr] lg:py-20">
+      <div class="lg:pl-11" data-reveal>
+        <div class="mb-5 flex items-center gap-5">
+          <p class="eyebrow">{homepage.storyLabel}</p>
+          <span class="h-px w-10 bg-jungle/45"></span>
+        </div>
+        <h2 class="serif-title max-w-md text-4xl sm:text-5xl">{homepage.storyHeading}</h2>
+        <p class="mt-7 max-w-[350px] text-base leading-8 text-jungle/78">{homepage.storyText}</p>
+        <a class="button-outline mt-7 gap-3" href="/about">Discover Our Story <ChevronRight size={15} /></a>
+      </div>
+      <div class="image-lift relative" data-reveal>
+        <img class="relative aspect-[2/1.02] w-full rounded-xl object-cover shadow-soft" src="/images/aerial-resort.jpg" alt="Aerial view of Jungle House Koh Tao surrounded by tropical hillside" data-parallax="-0.045" />
+      </div>
+    </section>
+
+    <section id="stay" class="container-pad pb-16">
+      <div class="mx-auto max-w-3xl text-center" data-reveal>
+        <div class="mb-3 flex items-center justify-center gap-5">
+          <p class="eyebrow">Stay in Comfort</p>
+          <span class="h-px w-10 bg-jungle/45"></span>
+        </div>
+        <h2 class="serif-title text-4xl sm:text-5xl">Your Jungle Retreat</h2>
+      </div>
+      <div class="mt-7 grid gap-8 lg:grid-cols-3">
+        {featuredRooms.map((room) => (
+          <article class="premium-card group overflow-hidden rounded-lg border border-jungle/12 bg-[#fffdf8] shadow-[0_10px_28px_rgba(24,58,45,0.08)]" data-reveal>
+            <img class="aspect-[2.25/1] w-full object-cover transition duration-500 group-hover:scale-105" src={room.mainImage} alt={`${room.title} at Jungle House Koh Tao`} />
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="font-serif text-2xl font-semibold text-jungle">{room.title}</h3>
+              </div>
+              <p class="mt-2 min-h-12 max-w-[280px] text-sm leading-6 text-jungle/78">{room.shortDescription}</p>
+              <div class="mt-4 flex flex-wrap gap-5 text-xs font-medium text-jungle/75">
+                <span class="inline-flex items-center gap-1.5"><Users size={14} />{room.guests}</span>
+                <span class="inline-flex items-center gap-1.5"><Waves size={14} />{room.viewType}</span>
+              </div>
+              <div class="mt-6 flex items-end justify-between gap-4">
+                <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-jungle/50">From<br /><span class="font-serif text-3xl font-semibold normal-case tracking-normal text-jungle">{room.priceFrom}</span> <span class="text-xs font-normal normal-case tracking-normal text-jungle/60">/ night</span></p>
+                <a class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-jungle text-xl text-cream" href={room.bookingUrl} aria-label={`Book ${room.title}`}>→</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="border-y border-jungle/8 bg-[#eef2e7] py-9">
+      <div class="container-pad">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <div class="mb-3 flex items-center justify-center gap-5">
+            <p class="eyebrow">Experiences</p>
+            <span class="h-px w-10 bg-jungle/45"></span>
+          </div>
+          <h2 class="serif-title text-3xl sm:text-4xl">Slow Down. Tune In. Go Deeper.</h2>
+        </div>
+        <div class="mt-8 grid gap-7 md:grid-cols-2 lg:grid-cols-4">
+          {experiences.map((item, index) => (
+            <article class="experience-item grid grid-cols-[86px_1fr] items-center gap-5" data-reveal>
+              <div class="grid h-[78px] w-[78px] place-items-center rounded-full border-2 border-jungle/85 text-jungle">
+                {index === 0 ? <Waves size={40} strokeWidth={1.35} /> : index === 1 ? <Palmtree size={40} strokeWidth={1.35} /> : index === 2 ? <Sunrise size={40} strokeWidth={1.35} /> : <Snail size={40} strokeWidth={1.35} />}
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-semibold">{item.title}</h3>
+                <p class="mt-1 text-sm leading-6 text-jungle/70">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="container-pad py-8">
+      <div class="grid gap-4 md:grid-cols-5">
+        {featuredGallery.map((item) => (
+          <img class="gallery-tile aspect-[1.45/1] w-full rounded-lg object-cover shadow-[0_8px_18px_rgba(24,58,45,0.1)]" src={item.image} alt={item.alt} data-reveal />
+        ))}
+      </div>
+    </section>
+
+    <section class="container-pad pb-8">
+      <div class="premium-panel grid overflow-hidden rounded-xl border border-jungle/12 bg-[#fffdf8]/80 shadow-[0_8px_24px_rgba(24,58,45,0.07)] lg:grid-cols-[0.8fr_1.2fr]" data-reveal>
+        <div class="border-b border-jungle/10 p-9 text-center lg:border-b-0 lg:border-r">
+          <p class="font-serif text-5xl font-semibold">4.8 <span class="text-2xl">/ 5</span></p>
+          <p class="mt-3 text-xl text-[#c59a4b]">★★★★★</p>
+          <p class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-jungle/60">Based on 120+ reviews</p>
+        </div>
+        <div class="grid gap-0 md:grid-cols-3">
+        {testimonials.map((item) => (
+          <blockquote class="border-jungle/10 p-8 md:border-r last:border-r-0">
+            <p class="text-2xl leading-none text-jungle">“</p>
+            <p class="text-sm leading-7 text-jungle/78">{item.quote}</p>
+            <footer class="mt-5 text-sm text-jungle/70">— {item.name.split(" ")[0]}, {item.country}</footer>
+          </blockquote>
+        ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

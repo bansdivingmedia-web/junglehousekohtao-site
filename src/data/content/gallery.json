@@ -1,0 +1,39 @@
+{
+  "images": [
+    {
+      "title": "Quiet Pool",
+      "category": "Pool",
+      "image": "/images/resort-hero.jpg",
+      "alt": "A quiet resort pool surrounded by tropical jungle",
+      "featured": true
+    },
+    {
+      "title": "Aerial Hideaway",
+      "category": "Resort",
+      "image": "/images/aerial-resort.jpg",
+      "alt": "A boutique resort tucked into lush Koh Tao hillside",
+      "featured": true
+    },
+    {
+      "title": "Garden Path",
+      "category": "Gardens",
+      "image": "/images/garden-terrace.jpg",
+      "alt": "A peaceful garden path through tropical plants",
+      "featured": true
+    },
+    {
+      "title": "Room Exterior",
+      "category": "Rooms",
+      "image": "/images/room-exterior.jpg",
+      "alt": "A cream bungalow exterior surrounded by palms",
+      "featured": true
+    },
+    {
+      "title": "Poolside Lounge",
+      "category": "Pool",
+      "image": "/images/balcony.jpg",
+      "alt": "Poolside loungers beside a tropical boutique resort pool",
+      "featured": true
+    }
+  ]
+}

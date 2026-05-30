@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { experiences } from "../data/experiences";
+---
+
+<BaseLayout title="Experiences | Jungle House Koh Tao">
+  <main>
+    <PageHero label="Experiences" title="Slow Island Days" text="Simple pleasures, thoughtful details and easy access to Koh Tao’s water, hills and village life." />
+    <section class="container-pad grid gap-6 py-20 md:grid-cols-2">
+      {experiences.map((item) => (
+        <article class="rounded-[1.75rem] bg-linen p-9 shadow-soft">
+          <div class="mb-7 grid h-14 w-14 place-items-center rounded-full bg-jungle text-2xl text-cream">
+            {item.iconName === "waves" ? "≋" : item.iconName === "leaf" ? "⌁" : item.iconName === "sun" ? "○" : "◇"}
+          </div>
+          <h2 class="font-serif text-4xl font-semibold">{item.title}</h2>
+          <p class="mt-4 max-w-xl leading-8 text-jungle/68">{item.description}</p>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>

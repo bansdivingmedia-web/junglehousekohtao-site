@@ -1,0 +1,22 @@
+{
+  "reviews": [
+    {
+      "name": "Amelia W.",
+      "country": "United Kingdom",
+      "quote": "Peaceful, thoughtful and beautifully surrounded by green. It felt private without ever feeling distant from the island.",
+      "rating": 5
+    },
+    {
+      "name": "Jonas R.",
+      "country": "Germany",
+      "quote": "The pool, gardens and warm hospitality made this our favorite stay in Thailand. Everything felt calm and considered.",
+      "rating": 5
+    },
+    {
+      "name": "Maya L.",
+      "country": "Singapore",
+      "quote": "A small resort with real atmosphere. We loved the quiet mornings, the shaded terrace and the easy access to Koh Tao.",
+      "rating": 5
+    }
+  ]
+}
