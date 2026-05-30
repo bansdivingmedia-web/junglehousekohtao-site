@@ -93,7 +93,23 @@ const navItems = [
       </div>
       <div class="border-t border-cream/10 py-5 text-center text-xs text-cream/55">© {new Date().getFullYear()} {siteSettings.resortName}. All rights reserved.</div>
     </footer>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
+      if (window.netlifyIdentity) {
+        const identityHash = window.location.hash || "";
+        window.netlifyIdentity.on("init", (user) => {
+          if (!user && /(?:invite|recovery|confirmation)_token=/.test(identityHash)) {
+            window.netlifyIdentity.open();
+          }
+        });
+
+        window.netlifyIdentity.on("login", () => {
+          window.location.href = "/admin/";
+        });
+
+        window.netlifyIdentity.init();
+      }
+
       const button = document.querySelector(".mobile-menu-button");
       const menu = document.querySelector(".mobile-menu");
       button?.addEventListener("click", () => {
