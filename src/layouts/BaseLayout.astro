@@ -93,8 +93,8 @@ const navItems = [
       </div>
       <div class="border-t border-cream/10 py-5 text-center text-xs text-cream/55">© {new Date().getFullYear()} {siteSettings.resortName}. All rights reserved.</div>
     </footer>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script>
+    <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script is:inline>
       if (window.netlifyIdentity) {
         const identityHash = window.location.hash || "";
         window.netlifyIdentity.on("init", (user) => {
