@@ -23,6 +23,7 @@ const navItems = [
     <title>{title}</title>
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <header id="site-header" class="sticky top-0 z-50 border-b border-[#ddd5c6] bg-[#fbf8ef] shadow-[0_1px_0_rgba(21,59,45,0.05)] transition-all duration-500">
       <div class="site-header-inner mx-auto flex h-[88px] w-full items-center justify-between gap-6 px-6 sm:px-10 lg:grid lg:grid-cols-[302px_1fr_178px] lg:px-[58px] xl:px-[76px]">
         <a href="/" class="flex items-center gap-3 justify-self-start" aria-label={siteSettings.resortName}>
@@ -109,9 +110,15 @@ const navItems = [
 
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const header = document.querySelector("#site-header");
+      const scrollProgress = document.querySelector(".scroll-progress");
 
       const updateHeader = () => {
         header?.classList.toggle("is-scrolled", window.scrollY > 24);
+        if (scrollProgress) {
+          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+          scrollProgress.style.setProperty("--scroll-progress", `${Math.min(Math.max(progress, 0), 1)}`);
+        }
       };
 
       updateHeader();
@@ -159,6 +166,15 @@ const navItems = [
         updateParallax();
         window.addEventListener("scroll", requestParallax, { passive: true });
         window.addEventListener("resize", requestParallax);
+
+        const glowTargets = document.querySelectorAll(".premium-card, .premium-panel, .booking-panel");
+        glowTargets.forEach((item) => {
+          item.addEventListener("pointermove", (event) => {
+            const rect = item.getBoundingClientRect();
+            item.style.setProperty("--glow-x", `${event.clientX - rect.left}px`);
+            item.style.setProperty("--glow-y", `${event.clientY - rect.top}px`);
+          });
+        });
       }
     </script>
   </body>
