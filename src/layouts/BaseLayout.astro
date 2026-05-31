@@ -97,14 +97,19 @@ const navItems = [
     <script is:inline>
       if (window.netlifyIdentity) {
         const identityHash = window.location.hash || "";
+        const isIdentityLink = /(?:invite|recovery|confirmation)_token=/.test(identityHash);
+
         window.netlifyIdentity.on("init", (user) => {
-          if (!user && /(?:invite|recovery|confirmation)_token=/.test(identityHash)) {
+          if (!user && isIdentityLink) {
             window.netlifyIdentity.open();
           }
         });
 
         window.netlifyIdentity.on("login", () => {
-          window.location.href = "/admin/";
+          if (isIdentityLink) {
+            window.history.replaceState(null, "", window.location.pathname);
+            window.location.href = "/admin/";
+          }
         });
 
         window.netlifyIdentity.init();
