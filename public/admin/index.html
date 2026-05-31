@@ -6,11 +6,16 @@
     <meta name="robots" content="noindex" />
     <title>Jungle House Admin</title>
     <style>
-      .site-link {
+      .admin-quick-actions {
         position: fixed;
         right: 18px;
         bottom: 18px;
         z-index: 10000;
+        display: flex;
+        gap: 10px;
+      }
+
+      .quick-action {
         border-radius: 4px;
         background: #173f2e;
         color: #fffaf0;
@@ -21,13 +26,24 @@
         box-shadow: 0 10px 24px rgba(12, 31, 23, 0.22);
       }
 
-      .site-link:hover {
+      .quick-action:hover {
         background: #21543f;
+      }
+
+      .quick-action-secondary {
+        background: #5d3628;
+      }
+
+      .quick-action-secondary:hover {
+        background: #744535;
       }
     </style>
   </head>
   <body>
-    <a class="site-link" href="/" target="_blank" rel="noopener">View Website</a>
+    <div class="admin-quick-actions">
+      <a class="quick-action" href="/" target="_blank" rel="noopener">View Website</a>
+      <a class="quick-action quick-action-secondary" href="/logout/">Logout</a>
+    </div>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
   </body>
