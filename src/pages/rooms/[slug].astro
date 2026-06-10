@@ -5,36 +5,35 @@ import { siteSettings } from "../../data/siteSettings";
 import { BedDouble, BedSingle, CalendarDays, ChevronLeft, Sparkles, Users, Waves } from "lucide-astro";
 
 export function getStaticPaths() {
-  return rooms.map((room) => ({
+  return rooms.filter((room) => room.category !== "Cozy Poolside").map((room) => ({
     params: { slug: room.slug },
     props: { room },
   }));
 }
 
 const { room } = Astro.props;
-const isPoolside = room.slug === "cozy-poolside" || room.category === "Cozy Poolside";
 const relatedRooms = rooms.filter((item) => item.slug !== room.slug && item.category === room.category).slice(0, 2);
 const gallery = room.gallery?.length ? room.gallery : [room.mainImage];
 ---
 
 <BaseLayout title={`${room.title} | ${siteSettings.resortName}`} description={room.shortDescription}>
   <main>
-    <section class={isPoolside ? "relative overflow-hidden bg-[#11100f] text-cream" : "relative overflow-hidden bg-[#f8f3ea] text-jungle"}>
+    <section class="relative overflow-hidden bg-[#f8f3ea] text-jungle">
       <div class="absolute inset-0">
         <img class="h-full w-full object-cover opacity-55" src={room.mainImage} alt={`${room.title} at ${siteSettings.resortName}`} />
-        <div class={isPoolside ? "absolute inset-0 bg-[linear-gradient(90deg,rgba(17,16,15,0.94),rgba(17,16,15,0.72),rgba(17,16,15,0.26))]" : "absolute inset-0 bg-[linear-gradient(90deg,rgba(248,243,234,0.96),rgba(248,243,234,0.78),rgba(248,243,234,0.22))]"}></div>
+        <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,243,234,0.96),rgba(248,243,234,0.78),rgba(248,243,234,0.22))]"></div>
       </div>
       <div class="container-pad relative grid min-h-[520px] items-end pb-14 pt-32">
         <div class="max-w-3xl">
-          <a class={isPoolside ? "mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-cream/80" : "mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-jungle/70"} href="/rooms">
+          <a class="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-jungle/70" href="/rooms">
             <ChevronLeft size={15} /> Back to Stay
           </a>
-          <p class={isPoolside ? "eyebrow text-cream/78" : "eyebrow"}>{room.category}</p>
+          <p class="eyebrow">{room.category}</p>
           <h1 class="mt-4 font-serif text-5xl font-semibold leading-none sm:text-7xl">{room.title}</h1>
-          <p class={isPoolside ? "mt-7 max-w-2xl text-lg leading-9 text-cream/82" : "mt-7 max-w-2xl text-lg leading-9 text-jungle/70"}>{room.longDescription}</p>
+          <p class="mt-7 max-w-2xl text-lg leading-9 text-jungle/70">{room.longDescription}</p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <span class={isPoolside ? "rounded-full border border-cream/20 bg-cream/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]" : "rounded-full border border-jungle/10 bg-[#fffdf8] px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]"}>{room.bedType}</span>
-            <span class={isPoolside ? "rounded-full border border-cream/20 bg-cream/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]" : "rounded-full border border-jungle/10 bg-[#fffdf8] px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]"}>{room.viewType}</span>
+            <span class="rounded-full border border-jungle/10 bg-[#fffdf8] px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]">{room.bedType}</span>
+            <span class="rounded-full border border-jungle/10 bg-[#fffdf8] px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]">{room.viewType}</span>
             {room.status === "Mockup" && <span class="rounded-full border border-gold/40 bg-gold/20 px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]">Mockup Design</span>}
           </div>
         </div>
@@ -54,7 +53,7 @@ const gallery = room.gallery?.length ? room.gallery : [room.mainImage];
       </div>
 
       <aside class="premium-panel h-fit rounded-lg border border-jungle/10 bg-[#fffdf8] p-7 shadow-[0_12px_32px_rgba(17,16,15,0.08)]">
-        <p class="eyebrow">{isPoolside ? "Poolside Grade" : "Room Details"}</p>
+        <p class="eyebrow">Room Details</p>
         <p class="mt-5 text-sm text-jungle/58">{room.status === "Mockup" ? "Status" : "From"} <span class="font-serif text-4xl font-semibold text-jungle">{room.priceFrom}</span></p>
         <div class="mt-7 grid gap-4 text-sm text-jungle/72">
           <span class="inline-flex items-center gap-3"><Users size={17} />{room.guests}</span>
@@ -72,18 +71,6 @@ const gallery = room.gallery?.length ? room.gallery : [room.mainImage];
         </a>
       </aside>
     </section>
-
-    {isPoolside && (
-      <section class="bg-[#11100f] py-16 text-cream">
-        <div class="container-pad grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div>
-            <p class="eyebrow text-cream/70">Higher Room Grade</p>
-            <h2 class="mt-4 font-serif text-4xl font-semibold sm:text-5xl">Designed as the more private, pool-focused stay.</h2>
-          </div>
-          <p class="text-base leading-8 text-cream/72">Cozy Poolside is separated from Standard and Deluxe as a higher room category. This page is ready for final photography, room plan, price and amenities when the complete information is available.</p>
-        </div>
-      </section>
-    )}
 
     {relatedRooms.length > 0 && (
       <section class="container-pad pb-20">

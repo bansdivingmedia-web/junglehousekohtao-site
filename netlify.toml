@@ -4,3 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/rooms/cozy-poolside/"
+  to = "/poolside/"
+  status = 301

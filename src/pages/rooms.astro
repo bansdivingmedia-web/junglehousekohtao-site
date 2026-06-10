@@ -5,7 +5,7 @@ import { rooms } from "../data/rooms";
 import { siteSettings } from "../data/siteSettings";
 import { BedDouble, BedSingle, CalendarDays, ChevronRight, Eye, Sparkles, Users, Waves } from "lucide-astro";
 
-const roomGroups = ["Cozy Standard", "Cozy Deluxe", "Cozy Poolside"].map((category) => ({
+const roomGroups = ["Cozy Standard", "Cozy Deluxe"].map((category) => ({
   category,
   rooms: rooms.filter((room) => room.category === category),
 }));
@@ -13,16 +13,15 @@ const roomGroups = ["Cozy Standard", "Cozy Deluxe", "Cozy Poolside"].map((catego
 const categoryIntro = {
   "Cozy Standard": "Essential comfort for easy island days, available as twin or double rooms.",
   "Cozy Deluxe": "A warmer, more spacious stay with upgraded finishes and twin or double layouts.",
-  "Cozy Poolside": "A prepared room concept for the next update, ready for final photos and details.",
 };
 ---
 
 <BaseLayout title={`Rooms | ${siteSettings.resortName}`}>
   <main>
-    <PageHero label="Stay" title="Choose Your COZY Room" text="Cozy Standard and Cozy Deluxe are available in twin and double layouts. Cozy Poolside is prepared as a mockup for future photos and room details." />
+    <PageHero label="Stay" title="Choose Your COZY Room" text="Cozy Standard and Cozy Deluxe are available in twin and double layouts. Poolside is now a separate higher room type with its own menu." />
 
     <section class="container-pad py-16 lg:py-20">
-      <div class="grid gap-6 lg:grid-cols-3">
+      <div class="grid gap-6 lg:grid-cols-2">
         {roomGroups.map((group) => (
           <a class="premium-panel rounded-lg border border-jungle/10 bg-[#fffdf8] p-7 shadow-[0_10px_28px_rgba(17,16,15,0.07)]" href={`#${group.category.toLowerCase().replaceAll(" ", "-")}`}>
             <p class="eyebrow">{group.category}</p>

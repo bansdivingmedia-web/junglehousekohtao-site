@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { rooms } from "../data/rooms";
+import { siteSettings } from "../data/siteSettings";
+import { BedDouble, CalendarDays, ChevronRight, Sparkles, Users, Waves } from "lucide-astro";
+
+const poolside = rooms.find((room) => room.slug === "cozy-poolside");
+const gallery = poolside?.gallery?.length ? poolside.gallery : ["/images/rooms/cozy-poolside/poolside-placeholder.jpg", "/images/resort-hero.jpg", "/images/aerial-resort.jpg"];
+
+if (!poolside) {
+  throw new Error("Cozy Poolside room data is missing");
+}
+---
+
+<BaseLayout title={`COZY Poolside | ${siteSettings.resortName}`} description={poolside.shortDescription}>
+  <main>
+    <section class="relative overflow-hidden bg-[#f8f3ea]">
+      <div class="absolute inset-0">
+        <img class="h-full w-full object-cover opacity-42" src={poolside.mainImage} alt="COZY Poolside preview" />
+        <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,243,234,0.98)_0%,rgba(248,243,234,0.9)_36%,rgba(248,243,234,0.42)_72%,rgba(248,243,234,0.2)_100%)]"></div>
+      </div>
+      <div class="container-pad relative grid min-h-[620px] items-center py-20 lg:grid-cols-[0.88fr_1.12fr]">
+        <div class="max-w-2xl">
+          <p class="eyebrow">Separate Room Type</p>
+          <img class="mt-7 w-[min(460px,88vw)] sm:w-[min(540px,100%)]" src="/images/brand/cozy-poolside-logo-small.png" alt="COZY Poolside" />
+          <p class="mt-8 max-w-xl text-lg leading-9 text-jungle/72">{poolside.longDescription}</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="rounded-full border border-jungle/10 bg-[#fffdf8]/86 px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]">{poolside.viewType}</span>
+            <span class="rounded-full border border-jungle/10 bg-[#fffdf8]/86 px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]">Higher Grade</span>
+            <span class="rounded-full border border-gold/35 bg-gold/18 px-5 py-3 text-xs font-bold uppercase tracking-[0.16em]">Mockup Design</span>
+          </div>
+          <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a class="button-primary gap-3" href="/#booking"><CalendarDays size={16} /> Request Availability</a>
+            <a class="button-outline gap-3" href="#poolside-details">View Details <ChevronRight size={15} /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="poolside-details" class="container-pad grid gap-12 py-16 lg:grid-cols-[1.08fr_0.78fr] lg:py-20">
+      <div class="grid gap-4">
+        <img class="aspect-[1.55/1] w-full rounded-lg object-cover shadow-soft" src={gallery[0]} alt="COZY Poolside main preview" />
+        <div class="grid gap-4 sm:grid-cols-3">
+          {gallery.slice(1, 4).map((image) => (
+            <img class="aspect-[1.35/1] rounded-lg object-cover shadow-[0_10px_24px_rgba(17,16,15,0.08)]" src={image} alt="COZY Poolside gallery preview" />
+          ))}
+        </div>
+      </div>
+
+      <aside class="premium-panel h-fit rounded-lg border border-jungle/10 bg-[#fffdf8] p-7 shadow-[0_12px_32px_rgba(17,16,15,0.08)]">
+        <p class="eyebrow">Poolside Grade</p>
+        <p class="mt-5 text-sm text-jungle/58">Status <span class="font-serif text-4xl font-semibold text-jungle">{poolside.priceFrom}</span></p>
+        <div class="mt-7 grid gap-4 text-sm text-jungle/72">
+          <span class="inline-flex items-center gap-3"><Users size={17} />{poolside.guests}</span>
+          <span class="inline-flex items-center gap-3"><BedDouble size={17} />{poolside.bedType}</span>
+          <span class="inline-flex items-center gap-3"><Waves size={17} />{poolside.viewType}</span>
+        </div>
+        <div class="mt-8 border-t border-jungle/10 pt-7">
+          <p class="mb-4 text-[11px] font-bold uppercase tracking-[0.18em] text-jungle/55">Prepared Details</p>
+          <ul class="grid gap-3 text-sm text-jungle/72">
+            {poolside.amenities.map((amenity) => <li class="inline-flex items-center gap-2"><Sparkles size={14} class="text-gold" />{amenity}</li>)}
+          </ul>
+        </div>
+        <a class="button-primary mt-8 w-full gap-3" href="/#booking"><CalendarDays size={16} /> Request Availability</a>
+      </aside>
+    </section>
+
+    <section class="bg-[#11100f] py-16 text-cream">
+      <div class="container-pad grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+        <div>
+          <p class="eyebrow text-cream/70">Not Part of Stay</p>
+          <h2 class="mt-4 font-serif text-4xl font-semibold sm:text-5xl">COZY Poolside is a separate higher room type.</h2>
+        </div>
+        <p class="text-base leading-8 text-cream/72">This page is separated from the normal Stay room list so Poolside can develop as its own product line with different room grades, pricing, photography and details later.</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

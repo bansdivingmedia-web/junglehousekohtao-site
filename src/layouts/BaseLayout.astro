@@ -6,6 +6,7 @@ import { siteSettings } from "../data/siteSettings";
 const { title = siteSettings.resortName, description = siteSettings.tagline } = Astro.props;
 const navItems = [
   { label: "Stay", href: "/rooms" },
+  { label: "Poolside", href: "/poolside" },
   { label: "Experiences", href: "/experiences" },
   { label: "Gallery", href: "/gallery" },
   { label: "About", href: "/about" },
@@ -29,7 +30,7 @@ const navItems = [
         <a href="/" class="flex items-center gap-3 justify-self-start" aria-label={siteSettings.resortName}>
           <img class="site-logo h-[46px] w-auto sm:h-[52px] lg:h-[58px]" src="/images/brand/cozy-logo-small.png" alt={siteSettings.resortName} />
         </a>
-        <nav class="hidden items-center justify-center gap-[48px] font-[Cinzel] text-[12px] font-bold uppercase tracking-[0.075em] text-[#11100f] xl:gap-[62px] lg:flex" aria-label="Main navigation">
+        <nav class="hidden items-center justify-center gap-[30px] font-[Cinzel] text-[12px] font-bold uppercase tracking-[0.075em] text-[#11100f] xl:gap-[42px] lg:flex" aria-label="Main navigation">
           {navItems.map((item) => <a class="py-8 hover:text-[#6f7568]" href={item.href}>{item.label}</a>)}
         </nav>
         <div class="hidden items-center justify-end gap-3 lg:flex">
