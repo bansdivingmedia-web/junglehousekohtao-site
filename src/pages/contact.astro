@@ -4,12 +4,12 @@ import PageHero from "../components/PageHero.astro";
 import { siteSettings } from "../data/siteSettings";
 ---
 
-<BaseLayout title="Contact | Jungle House Koh Tao">
+<BaseLayout title={`Contact | ${siteSettings.resortName}`}>
   <main>
     <PageHero label="Contact" title="Begin Your Stay" text="Reach out for availability, island transfers, room details or anything you would like arranged before arrival." />
     <section class="container-pad grid gap-10 py-20 lg:grid-cols-[0.9fr_1.1fr]">
       <div class="rounded-[1.75rem] bg-jungle p-9 text-cream shadow-soft">
-        <h2 class="font-serif text-4xl font-semibold">Jungle House Koh Tao</h2>
+        <h2 class="font-serif text-4xl font-semibold">{siteSettings.resortName}</h2>
         <div class="mt-8 grid gap-5 text-cream/75">
           <p>{siteSettings.address}</p>
           <a href={`tel:${siteSettings.phone}`}>{siteSettings.phone}</a>

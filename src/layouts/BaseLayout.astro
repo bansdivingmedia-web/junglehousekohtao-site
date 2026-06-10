@@ -24,13 +24,13 @@ const navItems = [
   </head>
   <body>
     <div class="scroll-progress" aria-hidden="true"></div>
-    <header id="site-header" class="sticky top-0 z-50 border-b border-[#ddd5c6] bg-[#fbf8ef] shadow-[0_1px_0_rgba(21,59,45,0.05)] transition-all duration-500">
+    <header id="site-header" class="sticky top-0 z-50 border-b border-[#ddd5c6] bg-[#f8f3ea] shadow-[0_1px_0_rgba(17,16,15,0.05)] transition-all duration-500">
       <div class="site-header-inner mx-auto flex h-[88px] w-full items-center justify-between gap-6 px-6 sm:px-10 lg:grid lg:grid-cols-[302px_1fr_178px] lg:px-[58px] xl:px-[76px]">
         <a href="/" class="flex items-center gap-3 justify-self-start" aria-label={siteSettings.resortName}>
-          <img class="site-logo h-[62px] w-auto sm:h-[68px] lg:h-[74px]" src="/images/jungle-house-logo.png" alt={siteSettings.resortName} />
+          <img class="site-logo h-[46px] w-auto sm:h-[52px] lg:h-[58px]" src="/images/brand/cozy-logo-small.png" alt={siteSettings.resortName} />
         </a>
-        <nav class="hidden items-center justify-center gap-[48px] font-[Cinzel] text-[12px] font-bold uppercase tracking-[0.075em] text-[#243f36] xl:gap-[62px] lg:flex" aria-label="Main navigation">
-          {navItems.map((item) => <a class="py-8 hover:text-[#496353]" href={item.href}>{item.label}</a>)}
+        <nav class="hidden items-center justify-center gap-[48px] font-[Cinzel] text-[12px] font-bold uppercase tracking-[0.075em] text-[#11100f] xl:gap-[62px] lg:flex" aria-label="Main navigation">
+          {navItems.map((item) => <a class="py-8 hover:text-[#6f7568]" href={item.href}>{item.label}</a>)}
         </nav>
         <div class="hidden items-center justify-end gap-3 lg:flex">
           <a class="button-primary h-[44px] min-w-[150px] gap-3 px-6" href={siteSettings.bookNowUrl}>Book Now <Calendar size={14} /></a>
@@ -52,10 +52,10 @@ const navItems = [
       </div>
     </header>
     <slot />
-    <footer class="bg-[#143829] text-cream">
+    <footer class="bg-[#11100f] text-cream">
       <div class="container-pad grid gap-10 py-11 lg:grid-cols-[1.45fr_0.75fr_0.9fr_1.05fr_1.15fr]">
         <div>
-          <img class="h-20 w-auto brightness-0 invert" src="/images/jungle-house-logo-stacked.png" alt={siteSettings.resortName} />
+          <img class="h-16 w-auto brightness-0 invert" src="/images/brand/cozy-logo-small.png" alt={siteSettings.resortName} />
           <p class="mt-3 font-serif text-xl italic tracking-[0.08em] text-cream/80">{siteSettings.tagline}</p>
           <div class="mt-6 flex gap-3">
             <a class="grid h-9 w-9 place-items-center rounded-full border border-cream/35 hover:bg-cream/10" href={siteSettings.instagramUrl} aria-label="Instagram"><Instagram size={16} /></a>
@@ -81,7 +81,7 @@ const navItems = [
         </div>
         <div>
           <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-cream">Contact</p>
-          <p class="text-sm leading-7 text-cream/78">{siteSettings.email}<br />+66 89 123 4567<br /><br />14/45 Moo 1, Sairee Beach<br />Koh Tao, Surat Thani 84360</p>
+          <p class="text-sm leading-7 text-cream/78">{siteSettings.email}<br />{siteSettings.phone}<br /><br />{siteSettings.address}</p>
         </div>
         <div>
           <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-cream">Stay Inspired</p>

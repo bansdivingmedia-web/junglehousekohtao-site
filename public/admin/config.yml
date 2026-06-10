@@ -9,7 +9,7 @@ public_folder: /images/uploads
 
 site_url: https://junglehousekohtao.netlify.app
 display_url: https://junglehousekohtao.netlify.app
-logo_url: /images/jungle-house-logo.png
+logo_url: /images/brand/cozy-logo-small.png
 
 collections:
   - name: settings

@@ -7,7 +7,7 @@
       "slug": "garden-bungalow",
       "featured": true,
       "priceFrom": "฿3,800",
-      "bookingUrl": "https://booking.example.com/garden-bungalow",
+      "bookingUrl": "https://booking.example.com/cozy-garden-bungalow",
       "amenities": [
         "King bed",
         "Private terrace",
@@ -26,7 +26,7 @@
       "slug": "deluxe-pool-view",
       "featured": true,
       "priceFrom": "฿3,800",
-      "bookingUrl": "https://booking.example.com/deluxe-pool-view",
+      "bookingUrl": "https://booking.example.com/cozy-deluxe-pool-view",
       "amenities": [
         "King bed",
         "Pool view balcony",
@@ -40,12 +40,12 @@
     },
     {
       "shortDescription": "Elegant villa with extra space, privacy and pool access.",
-      "longDescription": "The most private stay at Jungle House, designed for unhurried days between the terrace, pool and tropical canopy.",
+      "longDescription": "The most private stay at COZY Koh Tao, designed for unhurried days between the terrace, pool and tropical canopy.",
       "mainImage": "/images/jungle-pool-villa.jpg",
-      "slug": "jungle-pool-villa",
+      "slug": "cozy-pool-villa",
       "featured": true,
       "priceFrom": "฿4,800",
-      "bookingUrl": "https://booking.example.com/jungle-pool-villa",
+      "bookingUrl": "https://booking.example.com/cozy-pool-villa",
       "amenities": [
         "Private plunge pool",
         "Outdoor lounge",
@@ -53,7 +53,7 @@
         "Espresso bar",
         "Evening turndown"
       ],
-      "title": "Jungle Pool Villa",
+      "title": "COZY Pool Villa",
       "guests": "2 Guests",
       "viewType": "Pool Access"
     }

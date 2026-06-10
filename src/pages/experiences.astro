@@ -2,9 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { experiences } from "../data/experiences";
+import { siteSettings } from "../data/siteSettings";
 ---
 
-<BaseLayout title="Experiences | Jungle House Koh Tao">
+<BaseLayout title={`Experiences | ${siteSettings.resortName}`}>
   <main>
     <PageHero label="Experiences" title="Slow Island Days" text="Simple pleasures, thoughtful details and easy access to Koh Tao’s water, hills and village life." />
     <section class="container-pad grid gap-6 py-20 md:grid-cols-2">

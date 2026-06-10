@@ -2,9 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { rooms } from "../data/rooms";
+import { siteSettings } from "../data/siteSettings";
 ---
 
-<BaseLayout title="Rooms | Jungle House Koh Tao">
+<BaseLayout title={`Rooms | ${siteSettings.resortName}`}>
   <main>
     <PageHero label="Stay" title="Rooms Made for Rest" text="Choose a garden bungalow, pool view room or private villa, each shaped by natural texture, soft light and tropical quiet." />
     <section class="container-pad grid gap-8 py-20 lg:grid-cols-3">

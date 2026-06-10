@@ -3,13 +3,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        jungle: "#153b2d",
-        moss: "#64715f",
+        jungle: "#11100f",
+        moss: "#6f7568",
         sand: "#d8c6a4",
-        cream: "#fbf7ed",
+        cream: "#f8f3ea",
         linen: "#fffdf8",
-        terracotta: "#b56443",
-        gold: "#c29a56",
+        terracotta: "#9d6148",
+        gold: "#b99a64",
       },
       fontFamily: {
         serif: ["Cormorant Garamond", "Georgia", "serif"],

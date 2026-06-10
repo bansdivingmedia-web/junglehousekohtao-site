@@ -1,4 +1,4 @@
-# Jungle House Koh Tao
+# COZY Koh Tao
 
 Premium boutique resort website built with Astro and Tailwind CSS.
 

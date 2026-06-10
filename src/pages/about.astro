@@ -2,13 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { homepage } from "../data/homepage";
+import { siteSettings } from "../data/siteSettings";
 ---
 
-<BaseLayout title="About | Jungle House Koh Tao">
+<BaseLayout title={`About | ${siteSettings.resortName}`}>
   <main>
     <PageHero label="About" title="Rooted in the Hills of Koh Tao" text={homepage.storyText} />
     <section class="container-pad grid items-center gap-12 py-20 lg:grid-cols-2">
-      <img class="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-soft" src="/images/aerial-resort.jpg" alt="Jungle House Koh Tao hillside resort" />
+      <img class="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-soft" src="/images/aerial-resort.jpg" alt={`${siteSettings.resortName} hillside retreat`} />
       <div>
         <p class="eyebrow">Our Pace</p>
         <h2 class="serif-title mt-5 text-5xl">Quiet luxury, naturally held.</h2>
