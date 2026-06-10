@@ -1,0 +1,173 @@
+---
+import { CalendarDays, DoorOpen, Mail, MessageSquare, Phone, User, Users, X } from "lucide-astro";
+import { bookingSettings } from "../data/booking";
+import { rooms } from "../data/rooms";
+
+const roomOptions = [bookingSettings.defaultRoom, ...rooms.map((room) => room.title)];
+---
+
+<div id="booking" class="container-pad relative z-10 -mt-[52px]">
+  <form
+    id="booking-quick-form"
+    class="booking-panel mx-auto grid max-w-[1020px] gap-0 overflow-hidden rounded-[14px] border border-[#ded6c7] bg-[#fffdf8] shadow-[0_14px_30px_rgba(24,58,45,0.16)] md:grid-cols-[1fr_1fr_1fr_auto]"
+    data-reveal
+  >
+    <label class="booking-field">
+      <span>
+        <span class="booking-label">Check-in</span>
+        <input class="booking-input" name="checkIn" type="date" required />
+      </span>
+      <CalendarDays size={21} />
+    </label>
+    <label class="booking-field">
+      <span>
+        <span class="booking-label">Check-out</span>
+        <input class="booking-input" name="checkOut" type="date" required />
+      </span>
+      <CalendarDays size={21} />
+    </label>
+    <label class="booking-field">
+      <span>
+        <span class="booking-label">Guests</span>
+        <select class="booking-input" name="guests" required>
+          {bookingSettings.guestOptions.map((option, index) => <option selected={index === 1} value={option}>{option}</option>)}
+        </select>
+      </span>
+      <Users size={21} />
+    </label>
+    <button class="button-primary m-4 min-h-14 px-8" type="submit">{bookingSettings.panelTitle}</button>
+  </form>
+</div>
+
+<dialog id="booking-dialog" class="booking-dialog">
+  <div class="booking-dialog-shell">
+    <button class="booking-close" type="button" aria-label="Close booking form">
+      <X size={20} />
+    </button>
+    <div class="booking-dialog-copy">
+      <p class="eyebrow">Booking Request</p>
+      <h2 class="serif-title mt-3 text-4xl">Plan Your Stay</h2>
+      <p class="mt-4 text-sm leading-7 text-jungle/70">Send us your preferred dates and contact details. The team will confirm availability before any payment is needed.</p>
+    </div>
+    <form id="booking-request-form" class="booking-request-form">
+      <label>
+        <span>Check-in</span>
+        <input name="checkIn" type="date" required />
+      </label>
+      <label>
+        <span>Check-out</span>
+        <input name="checkOut" type="date" required />
+      </label>
+      <label>
+        <span>Guests</span>
+        <select name="guests" required>
+          {bookingSettings.guestOptions.map((option, index) => <option selected={index === 1} value={option}>{option}</option>)}
+        </select>
+      </label>
+      <label>
+        <span>Room</span>
+        <select name="room" required>
+          {roomOptions.map((option) => <option value={option}>{option}</option>)}
+        </select>
+      </label>
+      <label>
+        <span>Your name</span>
+        <div class="booking-icon-input">
+          <User size={16} />
+          <input name="name" autocomplete="name" placeholder="Full name" type="text" required />
+        </div>
+      </label>
+      <label>
+        <span>Phone / WhatsApp</span>
+        <div class="booking-icon-input">
+          <Phone size={16} />
+          <input name="phone" autocomplete="tel" placeholder="+66..." type="tel" required />
+        </div>
+      </label>
+      <label>
+        <span>Email</span>
+        <div class="booking-icon-input">
+          <Mail size={16} />
+          <input name="email" autocomplete="email" placeholder="you@example.com" type="email" />
+        </div>
+      </label>
+      <label class="md:col-span-2">
+        <span>Notes</span>
+        <div class="booking-icon-input items-start">
+          <MessageSquare class="mt-4" size={16} />
+          <textarea name="notes" placeholder="Arrival time, special requests, extra guests..."></textarea>
+        </div>
+      </label>
+      <input name="source" type="hidden" value="homepage" />
+      <p id="booking-status" class="booking-status md:col-span-2" role="status"></p>
+      <button class="button-primary min-h-14 md:col-span-2" type="submit">
+        <DoorOpen size={16} /> Send Booking Request
+      </button>
+    </form>
+  </div>
+</dialog>
+
+<script define:vars={{ bookingSettings }}>
+  const quickForm = document.querySelector("#booking-quick-form");
+  const dialog = document.querySelector("#booking-dialog");
+  const closeButton = document.querySelector(".booking-close");
+  const requestForm = document.querySelector("#booking-request-form");
+  const statusText = document.querySelector("#booking-status");
+
+  const setStatus = (message, type = "info") => {
+    if (!statusText) return;
+    statusText.textContent = message;
+    statusText.dataset.type = type;
+  };
+
+  const openDialog = () => {
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute("open", "");
+    }
+  };
+
+  quickForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const quickData = new FormData(quickForm);
+    ["checkIn", "checkOut", "guests"].forEach((name) => {
+      const field = requestForm?.querySelector(`[name="${name}"]`);
+      if (field) field.value = quickData.get(name) || "";
+    });
+    setStatus("");
+    openDialog();
+  });
+
+  closeButton?.addEventListener("click", () => dialog?.close());
+
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  requestForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const submitButton = requestForm.querySelector("button[type='submit']");
+    const payload = Object.fromEntries(new FormData(requestForm).entries());
+    submitButton.disabled = true;
+    setStatus("Sending your request...", "info");
+
+    try {
+      const response = await fetch("/.netlify/functions/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || bookingSettings.errorMessage);
+      }
+      setStatus(result.mode === "test" ? bookingSettings.setupMessage : bookingSettings.successMessage, result.mode === "test" ? "info" : "success");
+      if (result.mode !== "test") requestForm.reset();
+    } catch (error) {
+      setStatus(error.message || bookingSettings.errorMessage, "error");
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+</script>

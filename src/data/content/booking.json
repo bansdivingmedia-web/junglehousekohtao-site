@@ -1,0 +1,14 @@
+{
+  "panelTitle": "Check Availability",
+  "successMessage": "Thank you. We received your booking request and will reply shortly.",
+  "setupMessage": "Booking request captured in test mode. Connect Google Sheets to start saving live requests.",
+  "errorMessage": "Sorry, we could not send your request. Please try again or contact us directly.",
+  "guestOptions": [
+    "1 Adult",
+    "2 Adults",
+    "3 Adults",
+    "4 Adults",
+    "Family / Group"
+  ],
+  "defaultRoom": "Any available room"
+}

@@ -47,6 +47,24 @@ collections:
           - { label: Story Heading, name: storyHeading, widget: string }
           - { label: Story Text, name: storyText, widget: text }
 
+  - name: booking
+    label: Booking
+    files:
+      - label: Booking Settings
+        name: booking
+        file: src/data/content/booking.json
+        preview_path: /
+        fields:
+          - { label: Panel Button Text, name: panelTitle, widget: string }
+          - { label: Success Message, name: successMessage, widget: text }
+          - { label: Setup/Test Mode Message, name: setupMessage, widget: text }
+          - { label: Error Message, name: errorMessage, widget: text }
+          - { label: Default Room Option, name: defaultRoom, widget: string }
+          - label: Guest Options
+            name: guestOptions
+            widget: list
+            field: { label: Guest Option, name: guestOption, widget: string }
+
   - name: rooms
     label: Rooms
     files:

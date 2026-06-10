@@ -7,7 +7,7 @@
       "slug": "garden-bungalow",
       "featured": true,
       "priceFrom": "฿3,800",
-      "bookingUrl": "https://booking.example.com/cozy-garden-bungalow",
+      "bookingUrl": "/#booking",
       "amenities": [
         "King bed",
         "Private terrace",
@@ -26,7 +26,7 @@
       "slug": "deluxe-pool-view",
       "featured": true,
       "priceFrom": "฿3,800",
-      "bookingUrl": "https://booking.example.com/cozy-deluxe-pool-view",
+      "bookingUrl": "/#booking",
       "amenities": [
         "King bed",
         "Pool view balcony",
@@ -45,7 +45,7 @@
       "slug": "cozy-pool-villa",
       "featured": true,
       "priceFrom": "฿4,800",
-      "bookingUrl": "https://booking.example.com/cozy-pool-villa",
+      "bookingUrl": "/#booking",
       "amenities": [
         "Private plunge pool",
         "Outdoor lounge",
