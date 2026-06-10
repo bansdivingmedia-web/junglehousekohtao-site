@@ -74,7 +74,7 @@ const featuredGallery = gallery.filter((item) => item.featured).slice(0, 5);
               </div>
               <div class="mt-6 flex items-end justify-between gap-4">
                 <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-jungle/50">From<br /><span class="font-serif text-3xl font-semibold normal-case tracking-normal text-jungle">{room.priceFrom}</span> <span class="text-xs font-normal normal-case tracking-normal text-jungle/60">/ night</span></p>
-                <a class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-jungle text-xl text-cream" href={room.bookingUrl} aria-label={`Book ${room.title}`}>→</a>
+                <a class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-jungle text-xl text-cream" href={`/rooms/${room.slug}/`} aria-label={`View ${room.title}`}>→</a>
               </div>
             </div>
           </article>
