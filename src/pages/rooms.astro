@@ -3,30 +3,87 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { rooms } from "../data/rooms";
 import { siteSettings } from "../data/siteSettings";
+import { BedDouble, BedSingle, Camera, ChevronRight, Sparkles, Users, Waves } from "lucide-astro";
+
+const roomGroups = ["Cozy Standard", "Cozy Deluxe", "Cozy Poolside"].map((category) => ({
+  category,
+  rooms: rooms.filter((room) => room.category === category),
+}));
+
+const categoryIntro = {
+  "Cozy Standard": "Essential comfort for easy island days, available as twin or double rooms.",
+  "Cozy Deluxe": "A warmer, more spacious stay with upgraded finishes and twin or double layouts.",
+  "Cozy Poolside": "A prepared room concept for the next update, ready for final photos and details.",
+};
 ---
 
 <BaseLayout title={`Rooms | ${siteSettings.resortName}`}>
   <main>
-    <PageHero label="Stay" title="Rooms Made for Rest" text="Choose a garden bungalow, pool view room or private villa, each shaped by natural texture, soft light and tropical quiet." />
-    <section class="container-pad grid gap-8 py-20 lg:grid-cols-3">
-      {rooms.map((room) => (
-        <article class="overflow-hidden rounded-[1.75rem] bg-linen shadow-soft">
-          <img class="aspect-[4/3] w-full object-cover" src={room.mainImage} alt={`${room.title} accommodation`} />
-          <div class="p-7">
-            <h2 class="font-serif text-3xl font-semibold">{room.title}</h2>
-            <p class="mt-4 leading-7 text-jungle/68">{room.longDescription}</p>
-            <div class="mt-6 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-moss">
-              <span>{room.guests}</span><span>•</span><span>{room.viewType}</span>
+    <PageHero label="Stay" title="Choose Your COZY Room" text="Cozy Standard and Cozy Deluxe are available in twin and double layouts. Cozy Poolside is prepared as a mockup for future photos and room details." />
+
+    <section class="container-pad py-16 lg:py-20">
+      <div class="grid gap-6 lg:grid-cols-3">
+        {roomGroups.map((group) => (
+          <a class="premium-panel rounded-lg border border-jungle/10 bg-[#fffdf8] p-7 shadow-[0_10px_28px_rgba(17,16,15,0.07)]" href={`#${group.category.toLowerCase().replaceAll(" ", "-")}`}>
+            <p class="eyebrow">{group.category}</p>
+            <p class="mt-4 text-sm leading-7 text-jungle/68">{categoryIntro[group.category]}</p>
+            <p class="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-jungle">View Rooms <ChevronRight size={14} /></p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="container-pad space-y-16 pb-20">
+      {roomGroups.map((group) => (
+        <div id={group.category.toLowerCase().replaceAll(" ", "-")} class="scroll-mt-28">
+          <div class="mb-8 flex flex-col gap-4 border-b border-jungle/10 pb-6 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p class="eyebrow">Room Type</p>
+              <h2 class="serif-title mt-2 text-4xl sm:text-5xl">{group.category}</h2>
             </div>
-            <ul class="mt-6 grid gap-2 text-sm text-jungle/70">
-              {room.amenities.map((amenity) => <li>• {amenity}</li>)}
-            </ul>
-            <div class="mt-7 flex items-center justify-between gap-4">
-              <p class="text-sm text-jungle/58">From <span class="font-serif text-3xl font-semibold text-jungle">{room.priceFrom}</span></p>
-              <a class="button-primary" href={room.bookingUrl}>Book</a>
-            </div>
+            <p class="max-w-xl text-sm leading-7 text-jungle/68">{categoryIntro[group.category]}</p>
           </div>
-        </article>
+
+          <div class="grid gap-8 lg:grid-cols-2">
+            {group.rooms.map((room) => (
+              <article class="premium-card overflow-hidden rounded-lg border border-jungle/12 bg-[#fffdf8] shadow-[0_12px_32px_rgba(17,16,15,0.08)]">
+                <div class="relative">
+                  <img class="aspect-[1.55/1] w-full object-cover" src={room.mainImage} alt={`${room.title} accommodation`} />
+                  <div class="absolute left-5 top-5 flex flex-wrap gap-2">
+                    <span class="rounded-full bg-[#fffdf8]/92 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-jungle shadow-sm">{room.bedType}</span>
+                    {room.status === "Mockup" && <span class="rounded-full bg-[#11100f]/88 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-cream shadow-sm">Mockup</span>}
+                  </div>
+                </div>
+                <div class="grid gap-6 p-7">
+                  <div>
+                    <h3 class="font-serif text-3xl font-semibold text-jungle">{room.title}</h3>
+                    <p class="mt-3 max-w-2xl leading-7 text-jungle/68">{room.longDescription}</p>
+                  </div>
+                  <div class="grid gap-3 text-sm text-jungle/72 sm:grid-cols-3">
+                    <span class="inline-flex items-center gap-2"><Users size={16} />{room.guests}</span>
+                    <span class="inline-flex items-center gap-2">{room.bedType.includes("Twin") ? <BedSingle size={16} /> : <BedDouble size={16} />}{room.bedType}</span>
+                    <span class="inline-flex items-center gap-2"><Waves size={16} />{room.viewType}</span>
+                  </div>
+                  <ul class="grid gap-2 text-sm text-jungle/70 sm:grid-cols-2">
+                    {room.amenities.map((amenity) => <li class="inline-flex items-center gap-2"><Sparkles size={13} class="text-gold" />{amenity}</li>)}
+                  </ul>
+                  <div class="grid grid-cols-3 gap-3">
+                    {(room.gallery || [room.mainImage]).slice(0, 3).map((image) => (
+                      <img class="aspect-[1.35/1] rounded-md object-cover" src={image} alt={`${room.title} preview`} />
+                    ))}
+                  </div>
+                  <div class="flex flex-col gap-4 border-t border-jungle/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                    <p class="text-sm text-jungle/58">{room.status === "Mockup" ? "Status" : "From"} <span class="font-serif text-3xl font-semibold text-jungle">{room.priceFrom}</span></p>
+                    <a class={room.status === "Mockup" ? "button-outline gap-2" : "button-primary gap-2"} href={room.bookingUrl}>
+                      {room.status === "Mockup" ? <Camera size={15} /> : null}
+                      {room.status === "Mockup" ? "Prepared for Update" : "Book This Room"}
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       ))}
     </section>
   </main>

@@ -1,61 +1,138 @@
 {
   "rooms": [
     {
-      "shortDescription": "Cozy and private bungalows surrounded by tropical greenery.",
-      "longDescription": "Nestled beside the garden path, this bungalow is made for slow mornings, cool afternoons and quiet nights close to nature.",
-      "mainImage": "/images/garden-bungalow.jpg",
-      "slug": "garden-bungalow",
+      "title": "Cozy Standard Twin",
+      "slug": "cozy-standard-twin",
+      "category": "Cozy Standard",
+      "bedType": "Twin Beds",
+      "status": "Available",
+      "shortDescription": "Bright twin room with a private balcony and calm garden outlook.",
+      "longDescription": "A clean, comfortable room for friends or dive partners who want practical space, soft light and a quiet balcony after a day around Koh Tao.",
+      "mainImage": "/images/rooms/cozy-standard/standard-1.jpg",
+      "gallery": [
+        "/images/rooms/cozy-standard/standard-1.jpg",
+        "/images/rooms/cozy-standard/standard-2.jpg",
+        "/images/rooms/cozy-standard/standard-3.jpg"
+      ],
       "featured": true,
-      "priceFrom": "฿3,800",
+      "priceFrom": "฿2,800",
       "bookingUrl": "/#booking",
       "amenities": [
-        "King bed",
-        "Private terrace",
-        "Rain shower",
+        "Twin beds",
+        "Private balcony",
+        "Garden outlook",
         "Air conditioning",
         "Mini fridge"
       ],
-      "title": "Garden Bungalow",
       "guests": "2 Guests",
       "viewType": "Garden View"
     },
     {
-      "shortDescription": "Spacious rooms with private balcony overlooking the pool.",
-      "longDescription": "A generous room with refined natural textures, a shaded balcony and easy access to the pool terrace.",
-      "mainImage": "/images/deluxe-pool-view.jpg",
-      "slug": "deluxe-pool-view",
+      "title": "Cozy Standard Double",
+      "slug": "cozy-standard-double",
+      "category": "Cozy Standard",
+      "bedType": "Double Bed",
+      "status": "Available",
+      "shortDescription": "Simple, restful double room for relaxed island stays.",
+      "longDescription": "A soft and easy base for couples or solo travelers, with the same peaceful Standard comfort and a balcony facing the tropical hillside.",
+      "mainImage": "/images/rooms/cozy-standard/standard-5.jpg",
+      "gallery": [
+        "/images/rooms/cozy-standard/standard-5.jpg",
+        "/images/rooms/cozy-standard/standard-6.jpg",
+        "/images/rooms/cozy-standard/standard-7.jpg"
+      ],
+      "featured": true,
+      "priceFrom": "฿2,800",
+      "bookingUrl": "/#booking",
+      "amenities": [
+        "Double bed",
+        "Private balcony",
+        "Garden outlook",
+        "Air conditioning",
+        "Mini fridge"
+      ],
+      "guests": "2 Guests",
+      "viewType": "Garden View"
+    },
+    {
+      "title": "Cozy Deluxe Twin",
+      "slug": "cozy-deluxe-twin",
+      "category": "Cozy Deluxe",
+      "bedType": "Twin Beds",
+      "status": "Available",
+      "shortDescription": "Upgraded twin room with warmer finishes and more lounging space.",
+      "longDescription": "A refined twin layout with upgraded details, a brighter sitting area and extra room to settle in before or after island adventures.",
+      "mainImage": "/images/rooms/cozy-deluxe-twin/deluxe-twin-1.jpg",
+      "gallery": [
+        "/images/rooms/cozy-deluxe-twin/deluxe-twin-1.jpg",
+        "/images/rooms/cozy-deluxe-twin/deluxe-twin-2.jpg",
+        "/images/rooms/cozy-deluxe-twin/deluxe-twin-3.jpg"
+      ],
       "featured": true,
       "priceFrom": "฿3,800",
       "bookingUrl": "/#booking",
       "amenities": [
-        "King bed",
-        "Pool view balcony",
-        "Daybed",
-        "Coffee station",
+        "Twin beds",
+        "Private balcony",
+        "Sitting area",
+        "Air conditioning",
         "Smart TV"
       ],
-      "title": "Deluxe Pool View",
       "guests": "2 Guests",
-      "viewType": "Pool View"
+      "viewType": "Garden View"
     },
     {
-      "shortDescription": "Elegant villa with extra space, privacy and pool access.",
-      "longDescription": "The most private stay at COZY Koh Tao, designed for unhurried days between the terrace, pool and tropical canopy.",
-      "mainImage": "/images/jungle-pool-villa.jpg",
-      "slug": "cozy-pool-villa",
+      "title": "Cozy Deluxe Double",
+      "slug": "cozy-deluxe-double",
+      "category": "Cozy Deluxe",
+      "bedType": "Double Bed",
+      "status": "Available",
+      "shortDescription": "Spacious double room with soft textures and a relaxed lounge corner.",
+      "longDescription": "Our most polished room type for couples, designed with warm timber accents, a comfortable sitting area and a more generous sense of space.",
+      "mainImage": "/images/rooms/cozy-deluxe-double/deluxe-double-1.jpg",
+      "gallery": [
+        "/images/rooms/cozy-deluxe-double/deluxe-double-1.jpg",
+        "/images/rooms/cozy-deluxe-double/deluxe-double-2.jpg",
+        "/images/rooms/cozy-deluxe-double/deluxe-double-3.jpg"
+      ],
       "featured": true,
-      "priceFrom": "฿4,800",
+      "priceFrom": "฿3,800",
       "bookingUrl": "/#booking",
       "amenities": [
-        "Private plunge pool",
-        "Outdoor lounge",
-        "Large bathroom",
-        "Espresso bar",
-        "Evening turndown"
+        "Double bed",
+        "Private balcony",
+        "Sitting area",
+        "Air conditioning",
+        "Smart TV"
       ],
-      "title": "COZY Pool Villa",
       "guests": "2 Guests",
-      "viewType": "Pool Access"
+      "viewType": "Garden View"
+    },
+    {
+      "title": "Cozy Poolside",
+      "slug": "cozy-poolside",
+      "category": "Cozy Poolside",
+      "bedType": "To be confirmed",
+      "status": "Mockup",
+      "shortDescription": "A future poolside stay concept reserved for updated photos and details.",
+      "longDescription": "This room type is prepared as a design placeholder for the next release. Add final photos, bed setup, price and amenities when the room information is ready.",
+      "mainImage": "/images/rooms/cozy-poolside/poolside-placeholder.jpg",
+      "gallery": [
+        "/images/rooms/cozy-poolside/poolside-placeholder.jpg",
+        "/images/resort-hero.jpg",
+        "/images/aerial-resort.jpg"
+      ],
+      "featured": false,
+      "priceFrom": "Coming soon",
+      "bookingUrl": "/#booking",
+      "amenities": [
+        "Poolside location",
+        "Details coming soon",
+        "Photos to be added",
+        "Bed setup to be confirmed"
+      ],
+      "guests": "2 Guests",
+      "viewType": "Poolside"
     }
   ]
 }

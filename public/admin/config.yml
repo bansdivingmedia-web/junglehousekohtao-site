@@ -81,6 +81,9 @@ collections:
             fields:
               - { label: Title, name: title, widget: string }
               - { label: Slug, name: slug, widget: string }
+              - { label: Category, name: category, widget: select, options: [Cozy Standard, Cozy Deluxe, Cozy Poolside] }
+              - { label: Bed Type, name: bedType, widget: string }
+              - { label: Status, name: status, widget: select, options: [Available, Mockup], default: Available, required: false }
               - { label: Price From, name: priceFrom, widget: string }
               - { label: Guests, name: guests, widget: string }
               - { label: View Type, name: viewType, widget: string }
@@ -88,6 +91,7 @@ collections:
               - { label: Long Description, name: longDescription, widget: text }
               - { label: Amenities, name: amenities, widget: list, field: { label: Amenity, name: amenity, widget: string } }
               - { label: Main Image, name: mainImage, widget: image }
+              - { label: Gallery Images, name: gallery, widget: list, field: { label: Image, name: image, widget: image }, required: false }
               - { label: Booking URL, name: bookingUrl, widget: string }
               - { label: Featured on Homepage, name: featured, widget: boolean, default: true }
 

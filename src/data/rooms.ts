@@ -3,6 +3,9 @@ import roomsContent from "./content/rooms.json";
 export type Room = {
   title: string;
   slug: string;
+  category: string;
+  bedType: string;
+  status?: string;
   priceFrom: string;
   guests: string;
   viewType: string;
@@ -10,6 +13,7 @@ export type Room = {
   longDescription: string;
   amenities: string[];
   mainImage: string;
+  gallery?: string[];
   bookingUrl: string;
   featured: boolean;
 };
