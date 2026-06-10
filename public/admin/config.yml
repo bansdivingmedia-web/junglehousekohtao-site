@@ -7,8 +7,8 @@ publish_mode: simple
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
-site_url: https://junglehousekohtao.netlify.app
-display_url: https://junglehousekohtao.netlify.app
+site_url: https://cozykohtao.netlify.app
+display_url: https://cozykohtao.netlify.app
 logo_url: /images/brand/cozy-logo-small.png
 
 collections:
